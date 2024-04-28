@@ -1,26 +1,31 @@
 package accenture.poc.model;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Country {
+public class Country{
     private CountryName name;
-    private String cioc; 
+    private String countryCode; 
     private String[] continents;
     private String region;
     private String[] borders;
     private float area;
     private int population;
+    private float populationDensity;
 
-    public Country(CountryName name, String cioc, String[] continents, String region, String[] borders, float area, int population) {
+    @JsonCreator
+    public Country(@JsonProperty("name") CountryName name,@JsonProperty("cca3") String countryCode,@JsonProperty("continents") String[] continents,@JsonProperty("region") String region,@JsonProperty("borders") String[] borders,@JsonProperty("area") float area,@JsonProperty("population")  int population) {
         this.name = name;
-        this.cioc = cioc;
+        this.countryCode = countryCode;
         this.continents = continents;
         this.region = region;
         this.borders = borders;
         this.area = area;
         this.population = population;
+        this.populationDensity = this.population/this.area;
     }
 
     public Country() {
@@ -34,12 +39,12 @@ public class Country {
         this.name = name;
     }
 
-    public String getCioc() {
-        return this.cioc;
+    public String getCountryCode() {
+        return this.countryCode;
     }
 
-    public void setCioc(String cioc) {
-        this.cioc = cioc;
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 
     public String[] getContinents() {
@@ -82,13 +87,22 @@ public class Country {
         this.population = population;
     }
 
+    public float getPopulationDensity(){
+        return populationDensity;
+    }
+
+    public void setPopulationDensity(float populationDensity){
+        this.populationDensity = populationDensity;
+    }
+
+
     public Country name(CountryName name) {
         setName(name);
         return this;
     }
 
-    public Country cioc(String cioc) {
-        setCioc(cioc);
+    public Country countryCode(String countryCode) {
+        setCountryCode(countryCode);
         return this;
     }
 
@@ -125,19 +139,19 @@ public class Country {
             return false;
         }
         Country country = (Country) o;
-        return Objects.equals(name, country.name) && Objects.equals(cioc, country.cioc) && Objects.equals(continents, country.continents) && Objects.equals(region, country.region) && Objects.equals(borders, country.borders) && area == country.area && population == country.population;
+        return Objects.equals(name, country.name) && Objects.equals(countryCode, country.countryCode) && Objects.equals(continents, country.continents) && Objects.equals(region, country.region) && Objects.equals(borders, country.borders) && area == country.area && population == country.population;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, cioc, continents, region, borders, area, population);
+        return Objects.hash(name, countryCode, continents, region, borders, area, population);
     }
 
     @Override
     public String toString() {
         return "{" +
             " name='" + getName() + "'" +
-            ", cioc='" + getCioc() + "'" +
+            ", countryCode='" + getCountryCode() + "'" +
             ", continents='" + getContinents() + "'" +
             ", region='" + getRegion() + "'" +
             ", borders='" + getBorders() + "'" +
@@ -145,5 +159,6 @@ public class Country {
             ", population='" + getPopulation() + "'" +
             "}";
     }
+    
     
 }
