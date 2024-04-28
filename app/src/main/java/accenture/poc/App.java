@@ -3,6 +3,10 @@
  */
 package accenture.poc;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import accenture.poc.services.CountryService;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
@@ -10,5 +14,13 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
+        CountryService countryService = new CountryService();
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            System.out.println(objectMapper.writeValueAsString(countryService.getAllCountries()));
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }
