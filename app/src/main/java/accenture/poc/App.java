@@ -3,22 +3,20 @@
  */
 package accenture.poc;
 
+import java.io.IOException;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import accenture.poc.controller.CLIController;
 import accenture.poc.services.CountryService;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-        CountryService countryService = new CountryService();
+        CLIController cliController = new CLIController();
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            System.out.println(objectMapper.writeValueAsString(countryService.getAllCountries()));
-        } catch (Exception e) {
+            cliController.controller();
+        } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
