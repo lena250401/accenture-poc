@@ -32,16 +32,6 @@ public class CountryName {
         this.official = official;
     }
 
-    public CountryName common(String common) {
-        setCommon(common);
-        return this;
-    }
-
-    public CountryName official(String official) {
-        setOfficial(official);
-        return this;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -51,11 +41,6 @@ public class CountryName {
         }
         CountryName countryName = (CountryName) o;
         return Objects.equals(common, countryName.common) && Objects.equals(official, countryName.official);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(common, official);
     }
 
     @Override

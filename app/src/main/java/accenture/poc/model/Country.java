@@ -1,4 +1,5 @@
 package accenture.poc.model;
+import java.util.Arrays;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -95,42 +96,6 @@ public class Country{
         this.populationDensity = populationDensity;
     }
 
-
-    public Country name(CountryName name) {
-        setName(name);
-        return this;
-    }
-
-    public Country countryCode(String countryCode) {
-        setCountryCode(countryCode);
-        return this;
-    }
-
-    public Country continents(String[] continents) {
-        setContinents(continents);
-        return this;
-    }
-
-    public Country region(String region) {
-        setRegion(region);
-        return this;
-    }
-
-    public Country borders(String[] borders) {
-        setBorders(borders);
-        return this;
-    }
-
-    public Country area(float area) {
-        setArea(area);
-        return this;
-    }
-
-    public Country population(int population) {
-        setPopulation(population);
-        return this;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -139,22 +104,17 @@ public class Country{
             return false;
         }
         Country country = (Country) o;
-        return Objects.equals(name, country.name) && Objects.equals(countryCode, country.countryCode) && Objects.equals(continents, country.continents) && Objects.equals(region, country.region) && Objects.equals(borders, country.borders) && area == country.area && population == country.population;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, countryCode, continents, region, borders, area, population);
+        return Objects.equals(name, country.name) && Objects.equals(countryCode, country.countryCode) && Arrays.equals(continents, country.continents) && Objects.equals(region, country.region) && Arrays.equals(borders, country.borders) && area == country.area && population == country.population;
     }
 
     @Override
     public String toString() {
         return "{" +
-            " name='" + getName() + "'" +
+            " name='" + getName().toString() + "'" +
             ", countryCode='" + getCountryCode() + "'" +
-            ", continents='" + getContinents() + "'" +
+            ", continents='" + getContinents().toString() + "'" +
             ", region='" + getRegion() + "'" +
-            ", borders='" + getBorders() + "'" +
+            ", borders='" + getBorders().toString() + "'" +
             ", area='" + getArea() + "'" +
             ", population='" + getPopulation() + "'" +
             "}";

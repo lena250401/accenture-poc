@@ -1,5 +1,4 @@
 package accenture.poc.services;
-import java.lang.reflect.Array;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -7,13 +6,9 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.checkerframework.checker.units.qual.C;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
