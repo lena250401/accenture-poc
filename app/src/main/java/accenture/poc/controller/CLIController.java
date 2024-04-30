@@ -1,6 +1,5 @@
 package accenture.poc.controller;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -20,6 +19,12 @@ public class CLIController {
         this.countryService = new CountryService();
     }
 
+    /**
+     * Method for controlling the flow of program
+     * @throws JsonGenerationException
+     * @throws JsonMappingException
+     * @throws IOException
+     */
     public void controller() throws JsonGenerationException, JsonMappingException, IOException{
         while(true){
             displyaMenu();
@@ -28,6 +33,12 @@ public class CLIController {
         }
     }
 
+    /**
+     * Method calling the different services based on the user's choice
+     * @throws JsonGenerationException
+     * @throws JsonMappingException
+     * @throws IOException
+     */
     private void handleUserChoice() throws JsonGenerationException, JsonMappingException, IOException{
         ObjectMapper objectMapper = new ObjectMapper();
         switch(choice){
@@ -48,13 +59,20 @@ public class CLIController {
                 System.out.println("Invalid choice, please enter a valid number");
         } 
     }
-    
+
+    /**
+     * Method for retrieving the user's input
+     * @return a String with the user's input
+     */
     private String getUserInput(){
         System.out.println("Please enter the number of your selected choice:");
         String input = scanner.nextLine();
         return input;
     }
 
+    /**
+     * Method to display the menu in the terminal
+     */
     private void displyaMenu(){
         System.out.println("Here are the choices you can select from: \n" + 
         "1 - Get the list of countries by population density in descending order \n" + 

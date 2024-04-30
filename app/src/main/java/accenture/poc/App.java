@@ -5,10 +5,7 @@ package accenture.poc;
 
 import java.io.IOException;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import accenture.poc.controller.CLIController;
-import accenture.poc.services.CountryService;
 
 public class App {
 
@@ -17,7 +14,6 @@ public class App {
         try {
             cliController.controller();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

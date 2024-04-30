@@ -24,11 +24,21 @@ public class CountryService {
         this.client = HttpClient.newHttpClient();
     }
 
+    /**
+     * Method for writting an HTTP request to the API
+     * @param path the specific path for the request
+     * @return the HTTP request
+     */
     private HttpRequest apiRequest(String path){
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(baseURL + path)).build();
         return request;
     }
 
+    /**
+     * Method for retreiving all countries from the API through an HTTP request
+     * @return an Array of countries
+     * @throws Exception
+     */
     public Country[] getAllCountries() throws Exception{
        HttpRequest request = apiRequest("/all");
        HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
@@ -39,13 +49,16 @@ public class CountryService {
        return countries;
     }
 
+    /**
+     * Method for sorting the list of countries in descneding order of population descending
+     * @return a list of countries
+     */
     public Country[] getCountryByDescendingPopulationDensity(){
          
             Country[] countries = new Country[0];
             try {
                 countries = getAllCountries();
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             Arrays.sort(countries, new PopulationDensityComparator());
@@ -53,12 +66,15 @@ public class CountryService {
     }
 
 
+    /**
+     * Method for finding the Asian country with most bordering countries of a different region
+     * @return a country
+     */
     public Country getAsianCountryWithMostBorderingCountriesOfDifferentRegion(){
         Country[] countries = new Country[0];
             try {
                 countries = getAllCountries();
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
     
