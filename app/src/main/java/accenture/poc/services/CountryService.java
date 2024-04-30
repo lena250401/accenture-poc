@@ -24,6 +24,10 @@ public class CountryService {
         this.client = HttpClient.newHttpClient();
     }
 
+    public void setClient(HttpClient client) {
+        this.client = client;
+    }
+
     /**
      * Method for writting an HTTP request to the API
      * @param path the specific path for the request
