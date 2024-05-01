@@ -56,7 +56,7 @@ public class CLIController {
                 System.exit(0);
                 break;
             default:
-                System.out.println("Invalid choice, please enter a valid number");
+                System.out.println("Invalid choice, please enter a valid number \n");
         } 
     }
 
