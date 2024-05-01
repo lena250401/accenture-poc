@@ -14,6 +14,7 @@ The model layer contains classes that represent the data entities used in the pr
 
 ### Controller
 The controller layer acts as an interface between the user interface (UI) and the service layer. It handles user input, invokes service methods, and presents the results to the user. In this program, the controller is not explicitly defined since it may vary depending on the user interface (e.g., command-line interface, graphical user interface).
+- `CLIController`: Controls the flow of the program based on the user's input.
 
 ### Service
 The service layer contains classes responsible for fetching and processing data from external sources, such as APIs. It encapsulates the business logic of the application. The service classes used in this program include:
@@ -59,3 +60,10 @@ Or alternatively:
 This program uses Gradle as a build tool and relies on the following external libraries:
 - Jackson Databind: For JSON data binding and processing.
 - Mockito Core: For mocking objects during testing.
+
+## Improvements
+Here are some improvements that could be made:
+- Add different levels of logging for easier debugging
+- Add tests to the CLIController class
+- Improve exception handling
+- Improve the UI interface
