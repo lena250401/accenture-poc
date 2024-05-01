@@ -1,7 +1,3 @@
-Certainly! Here's the full README file with all the sections included:
-
----
-
 # Country Information Retrieval Program
 
 ## Overview
