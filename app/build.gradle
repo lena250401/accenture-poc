@@ -36,6 +36,15 @@ application {
     mainClass = 'accenture.poc.App'
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'accenture.poc.App' 
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it)}
+    }
+}
+
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
